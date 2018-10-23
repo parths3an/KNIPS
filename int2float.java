@@ -2,24 +2,25 @@
 public class int2float {
 		
 		public static void main (String args[]) {
+	    int I1 = (int) 111; //0
 			
-			byte I1 = (byte) 128; //0
-			byte I2 = (byte) 120; //123
-			
-			byte tempStore1 = I1;
-			byte tempStore2 = I2;
+			int tempStore1 = (int)((I1>>>8)&0xff);
+			int tempStore2 = (int)(I1&0xFF);
+//			System.out.println(Integer.toBinaryString((tempStore1)));
+//			System.out.println(Integer.toBinaryString((tempStore2)));
 			int correctBias=0;
+			
 			
 			int signBit = (tempStore1 & 0xff) >>> 7;
 			
-			byte bias = 0x1D; //29 in hex;
-			byte floatOutput1 = (byte) ((tempStore1 <<1));
+			int bias = 29; //29 in hex;
+			int floatOutput1 = (int) ((tempStore1&0x7F));
 			System.out.println(Integer.toBinaryString((floatOutput1)));
 	
-			byte floatOutput2 = tempStore2; 
+			int floatOutput2 = tempStore2; 
 			
-			
-//			System.out.println(Integer.toBinaryString(I2>>1));
+			System.out.println(Integer.toBinaryString((floatOutput2)));
+
 			
 			
 			// ADJUSTING EXPONENT
@@ -29,14 +30,16 @@ public class int2float {
 				// Continue shift left until first reg traversed
 				
 				byte msb = (byte) ((floatOutput1 >>> 6)& 0xff);
-				System.out.println(Integer.toBinaryString(msb));
+//				System.out.println(Integer.toBinaryString(msb));
 				if(msb ==0) {
 					floatOutput1 = (byte) ((floatOutput1 &0xff)<< 1);
-					System.out.println(Integer.toBinaryString((floatOutput1)));
+//					System.out.println(Integer.toBinaryString((floatOutput1)));
 					floatOutput1 = (byte) (floatOutput1 + ((floatOutput2 & 0xff) >>> 7));
-					floatOutput2 = (byte) ((floatOutput2 << 1)&0xff);
-				    
-					System.out.println(Integer.toBinaryString((floatOutput1)));
+//					System.out.println(Integer.toBinaryString((floatOutput2 & 0xff) >>> 7));
+					floatOutput2 = (((floatOutput2&0x7F)<<1)&0xff);
+					System.out.println(Integer.toBinaryString((floatOutput2)));
+//				    
+//					System.out.println(Integer.toBinaryString((floatOutput1)));
 					bias--;
 				} 
 //				System.out.println(floatOutput1);
@@ -56,16 +59,14 @@ public class int2float {
             	}
 				// Continue shift left until first reg traversed
 				
-				System.out.println(Integer.toBinaryString(msb));
+//				System.out.println(Integer.toBinaryString(msb));
 				if(msb ==0) {
-					floatOutput2 = (byte) ((floatOutput2 << 1)&0xff);
+					floatOutput2 = (byte) ((floatOutput2&0xff << 1)&0xff);
 //					 System.out.println(Integer.toBinaryString((floatOutput2)));
 					bias--;
 				} 
 			}
 			
-
-	    
 	        // ROUNDING
 	        
 	        int eightElement = (floatOutput2>>>7);
@@ -77,8 +78,8 @@ public class int2float {
 	        int secondElement = (((floatOutput2<<6)&0xff)>>>7);
 	        int firstElement = (((floatOutput2<<7)&0xff)>>>7);
 	        
-	        System.out.println(Integer.toBinaryString((floatOutput2)));
-	        System.out.println(Integer.toBinaryString(firstElement));
+//	        System.out.println(Integer.toBinaryString((floatOutput2)));
+//	        System.out.println(Integer.toBinaryString(firstElement));
 	        
 	        
 	        if( fifthElement == 1 && fourthElement ==1){
@@ -105,9 +106,20 @@ public class int2float {
 	        	floatOutput1 = (byte) (floatOutput1 >>>1);
 	        	bias++;
 	        }
+	        floatOutput2 = floatOutput2&0xff;
+	        
+	        
 	        System.out.println(bias);
+	  
 		    System.out.println(Integer.toBinaryString(floatOutput1));
+		    
 		    System.out.println(Integer.toBinaryString(floatOutput2));
+		    int exponent =bias-15;
+		    int fraction = floatOutput1<<3 | floatOutput2>>>5;
+		    System.out.println(Integer.toBinaryString(signBit));
+		    System.out.println(Integer.toBinaryString(exponent));
+		    System.out.println(Integer.toBinaryString(fraction));
+		    
 		}
 		
 
