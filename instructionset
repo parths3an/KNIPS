@@ -1,0 +1,10 @@
+add rs,5,0
+add rs,rt,1
+lb rs,15
+sb rs,0
+xor rt,rs,r1
+or rt,rs,r1
+and rt,rs,r1
+lsf rt,8,1
+lsf rt,4,0
+jump rt,10
