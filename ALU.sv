@@ -25,28 +25,8 @@ module ALU(
 // single instruction for both LSW & MSW
   case(OP)
     kADD : {SC_OUT, OUT} = {1'b0,INPUTA} + INPUTB + SC_IN;    // add w/ carry-in & out
-
-    kSH:        begin
-		[1:0] temp = INPUTB & 1b'1;  // signal
-		INPUTB = INPUTB >> 1;
-		if (temp == 1b'1) {
-			//do left shift
-			INPUTA = INPUTA << (INPUTB - 1);
-			[7:0]t = INPUTA & 8b'128; // last shifted bit is saved
-			OUT = INPUTA << 1;
-			SC_OUT = t >> 7;
-		} else [
-			//do right shift
-			INPUTA = INPUTA >> (INPUTB - 1);
-			[7:0]t = INPUTA & 1b'1; // last shifted bit is saved
-			OUT = INPUTA >> 1;
-			SC_OUT = t[0];
-		}
-                end
-
-
-	kLSH : {SC_OUT, OUT} = {INPUTA, SC_IN};  	       // shift left 
-    kRSH : {OUT, SC_OUT} = {SC_IN, INPUTA};			   // shift right
+    kLSH : {SC_OUT, OUT} = {INPUTA, SC_IN};  	       // shift left 
+	kRSH : {OUT, SC_OUT} = {SC_IN, INPUTA};			   // shift right
 //  kRSH : {OUT, SC_OUT} = (INPUTA << 1'b1) | SC_IN;
  	kXOR : begin 
  	         OUT    = INPUTA^INPUTB;  				   // exclusive OR
@@ -60,13 +40,6 @@ module ALU(
 	         OUT    = INPUTA + (~INPUTB) + SC_IN;	   // check me on this!
 			 SC_OUT = 0;                               // check me on this!
 	       end
-    
-    kOR : begin
-		OUT = INPUTA | INPUTBL
-                 SC_OUT = 0;
-          end
-
-
     default: {SC_OUT,OUT} = 0;						   // no-op, zero out
   endcase
 // option 2 -- separate LSW and MSW instructions
@@ -95,8 +68,6 @@ module ALU(
        OP == 3'b101; //!INPUTB[0];               // note [0] -- look at LSB only
 // always_comb	branch_enable = opcode[8:6]==3'b101? 1 : 0;  
 endmodule
-
-
 
 	   /*
 			Left shift
