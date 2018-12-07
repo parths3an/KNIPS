@@ -49,6 +49,10 @@ bitset<16> mentisaBitMask(0x00FF);
 bitset<16> lshInBits(lsh);
 bitset<16> lowerMentisa = mentisaBitMask & lshInBits;
 bitset<16> fullMentisa = lowerMentisa | mshFirstTwo;
+bitset<16> shiftedBits;
+bitset<16> stickyBits;
+bitset<16> allOnes(0xFFFF);
+bitset<1> sticky(0x0);
 
 //5: 
 if (r2 != 0)
@@ -79,8 +83,20 @@ else if (r2 >= 25 and r2 <30)
 else if (r2 >= 14 and r2 < 25)
 {
     //#TODO
-    fullMentisa = fullMentisa << (r2- baseForBitShifting);
-    result = (int) fullMentisa.to_ulong(); 
+    int shiftRightCount = 25 - r2;
+    int shiftLeftCount = 16 - shiftRightCount; 
+    stickyBits =  fullMentisa << shiftLeftCount; 
+    stickyBits = stickyBits >> shiftLeftCount;
+    stickyBits = stickyBits & allOnes;
+    //Find the sticky bit by going through by oring each of the bits 
+
+    for(int i=0; i < stickyBits.size(); i++)
+    {
+        sticky[0] = sticky[0] | (int) stickyBits[i];
+    }
+   
+    //Add and do whatever needs to do 
+    
 }
 else if (r2 <= 13)
 {

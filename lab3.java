@@ -99,7 +99,7 @@ public class lab3 {
             machinecode = opcode + regToCode.get(strs[0]) + convertToBinary(Integer.parseInt(strs[1]), 3) +  strs[2];
             break;
 
-            default:
+            default: 
             System.out.println("error occured in parsing instruction");
             break;
         }
