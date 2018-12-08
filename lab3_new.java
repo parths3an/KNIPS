@@ -44,26 +44,47 @@ public class lab3_new {
         regToCode.put("r11", "1011");
         regToCode.put("r12", "1100");
 
+
+
+        HashMap<Integer, String> valToImm = new HashMap<>();
+        valToImm.put(0, "0000");
+        valToImm.put(1, "0001");
+        valToImm.put(4, "0010");
+        valToImm.put(61, "0011");
+        valToImm.put(62, "0100");
+        valToImm.put(63, "0101");
+        valToImm.put(32, "0110");
+        valToImm.put(64, "0111");
+        valToImm.put(255, "1000");
+   
         try {
             Scanner input = new Scanner(System.in); 
             String file = input.next();
             
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedReader reader = new BufferedReader(new FileReader(file)); 
+            BufferedWriter writer = new BufferedWriter(new FileWriter("machine_code1.txt"));
+            
+            
             String line = null;
         while ((line = reader.readLine()) != null) { 
             String[] strs = line.split("\\s+");
-            String machinecode = processInstruction(map.get(strs[0]), strs[1], regToCode);
+            System.out.println(line);
+            String machinecode = processInstruction(map.get(strs[0]), strs[1], regToCode, valToImm);
             System.out.println(line + ": " + machinecode);
+
+            writer.write(machinecode);
             //write machine code to the file
+            writer.newLine();
         }
         reader.close();
+        writer.close(); 
         }
         catch(Exception e) {
             System.out.println("error in reading");
         }
     }
 
-    static String processInstruction(String opcode, String regInfo, HashMap<String, String> regToCode) {
+    static String processInstruction(String opcode, String regInfo, HashMap<String, String> regToCode, HashMap<Integer, String> valToImm) {
         String[]strs = regInfo.split(",");
         String machinecode = "";
         switch(opcode.charAt(0)) {
@@ -74,6 +95,7 @@ public class lab3_new {
 
             //value / immediate
             case '1':
+            machinecode = opcode + valToImm.get(Integer.parseInt(strs[0]));
             break;
             
             default: 
