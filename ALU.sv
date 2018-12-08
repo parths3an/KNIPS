@@ -10,7 +10,7 @@ import definitions::*;			  // includes package "definitions"
 module ALU(
   input [ 7:0] INPUTA,      	  // data inputs
                INPUTB,
-  input [ 2:0] OP,				  // ALU opcode, part of microcode
+  input [ 4:0] OP,				  // ALU opcode, part of microcode
   input        SC_IN,             // shift in/carry in 
   output logic [7:0] OUT,		  // or:  output reg [7:0] OUT,
   output logic SC_OUT,			  // shift out/carry out
@@ -20,13 +20,88 @@ module ALU(
 	 
   op_mne op_mnemonic;			  // type enum: used for convenient waveform viewing
 	
+	//TODO: 
   always_comb begin
     {SC_OUT, OUT} = 0;
+		integer INPUTB_int;
+		always @( INPUTB )
+    INPUTB_int = INPUTB;
 // single instruction for both LSW & MSW
   case(OP)
-    kADD : {SC_OUT, OUT} = {1'b0,INPUTA} + INPUTB + SC_IN;    // add w/ carry-in & out
+   	sfrr: 
+		 begin
+			INPUTA = INPUTA >> (INPUTB_int - 1);
+			[7:0]t = INPUTA & 1b'1; // last shifted bit is saved
+			OUT = INPUTA >> 1;
+			SC_OUT = t[0];
+			end 	 
+	 	lbr:
+			begin
+				
+			end	
+	 	sbr: 
+			begin
 
-    kSH:        begin
+			end
+	  mov:
+			begin
+				OUT = INPUTA;
+				SC_OUT = 0; 
+			end
+    movr:
+			begin
+				OUT = INPUTB;
+				SC_OUT = 0; 
+			end
+		xorr:
+			begin
+				OUT = INPUTA ^ INPUTB;
+				SC_OUT = 0; 
+			end
+		orr:
+			begin
+				OUT = INPUTA | INPUTB;
+				SC_OUT = 0; 
+			end
+		andi:
+			begin
+				OUT = INPUTA & INPUTB;
+				SC_OUT = 0; 
+			end
+		branch:
+			begin
+
+			end
+    jump:
+			begin
+
+			end 
+		xori:
+			begin
+				
+			end 
+		addi:
+			begin
+
+			end 
+		sfri:
+			begin
+
+			end 
+		sfli:
+			begin
+
+			end 
+		set:
+			begin
+
+			end
+	end 
+	 /*
+	 kADD : {SC_OUT, OUT} = {1'b0,INPUTA} + INPUTB + SC_IN;    // add w/ carry-in & out
+
+    kSH:        
+		begin
 		[1:0] temp = INPUTB & 1b'1;  // signal
 		INPUTB = INPUTB >> 1;
 		if (temp == 1b'1) {
@@ -42,7 +117,7 @@ module ALU(
 			OUT = INPUTA >> 1;
 			SC_OUT = t[0];
 		}
-                end
+    end
 
 
 	kLSH : {SC_OUT, OUT} = {INPUTA, SC_IN};  	       // shift left 
@@ -68,7 +143,11 @@ module ALU(
 
 
     default: {SC_OUT,OUT} = 0;						   // no-op, zero out
-  endcase
+ 
+*/
+ endcase
+
+
 // option 2 -- separate LSW and MSW instructions
 //    case(OP)
 //	  kADDL : {SC_OUT,OUT} = INPUTA + INPUTB ;    // LSW add operation

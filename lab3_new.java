@@ -17,7 +17,7 @@ public class lab3_new {
         map.put("mov", "00011");
         map.put("movr", "00100");
         map.put("xorr", "00101");
-        map.put("or", "00110");
+        map.put("orr", "00110");
 
         map.put("andi", "10111");
         map.put("branch", "11000");
@@ -69,7 +69,7 @@ public class lab3_new {
         switch(opcode.charAt(0)) {
             //register
             case '0':
-            machinecode = opcode + regToCode.get(strs[0])
+            machinecode = opcode + regToCode.get(strs[0]);
             break;
 
             //value / immediate

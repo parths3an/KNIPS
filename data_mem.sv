@@ -28,7 +28,7 @@ module data_mem(
 // you may initialize your memory w/ constants, if you wish
       for(int i=0;i<256;i++)
 	    my_memory[i] <= 0;
-      my_memory[ 16] <= 254;   // overrides the 0
+      my_memory[16] <= 254;   // overrides the 0
       my_memory[244] <= 5;
 	end
     else if(WriteMem) begin

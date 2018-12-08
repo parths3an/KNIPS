@@ -31,7 +31,7 @@ logic       SC_IN;         // carry register (loop with ALU)
 
 // Fetch = Program Counter + Instruction ROM
 // Program Counter
-  PC PC1 (
+  PrmCtr PC1 (
 	.init       (start), 
 	.halt              ,  // SystemVerilg shorthand for .halt(halt), 
 	.jump_en           ,  // jump enable

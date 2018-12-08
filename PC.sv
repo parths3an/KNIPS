@@ -2,7 +2,7 @@
 // accepts branch and jump instructions
 // default = increment by 1
 // issues halt when PC reaches 63
-module PC(
+module PrmCtr(
   input init,
         jump_en,		// relative
 		branch_en,		// 

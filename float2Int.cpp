@@ -85,8 +85,8 @@ else if (r2 >= 14 and r2 < 25)
     //#TODO
     int shiftRightCount = 25 - r2;
     int shiftLeftCount = 16 - shiftRightCount; 
-    stickyBits =  fullMentisa << shiftLeftCount; 
-    stickyBits = stickyBits >> shiftLeftCount;
+    stickyBits =  fullMentisa << (shiftLeftCount-1); 
+    stickyBits = stickyBits >> (shiftLeftCount - 1);
     stickyBits = stickyBits & allOnes;
     //Find the sticky bit by going through by oring each of the bits 
 
@@ -95,6 +95,7 @@ else if (r2 >= 14 and r2 < 25)
         sticky[0] = sticky[0] | (int) stickyBits[i];
     }
    
+    bitset<1> roundingBit;    
     //Add and do whatever needs to do 
     
 }
