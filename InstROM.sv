@@ -44,7 +44,7 @@ module InstROM #(parameter A=10, W=9) (
   always_comb InstOut = inst_rom[InstAddress];
  
   initial begin
-  	$readmemb("machine_code.txt",inst_rom);
+  	$readmemb("machine_code1.txt",inst_rom);
   end 
   
 endmodule
