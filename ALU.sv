@@ -29,7 +29,7 @@ module ALU(
 // single instruction for both LSW & MSW
   case(OP)
    	sfrr: 
-		 begin
+		 begin 
 			INPUTA = INPUTA >> (INPUTB_int - 1);
 			[7:0]t = INPUTA & 1b'1; // last shifted bit is saved
 			OUT = INPUTA >> 1;
@@ -70,31 +70,40 @@ module ALU(
 			end
 		branch:
 			begin
-
+				if (INPUTA == 0)
+					ZERO = 1; 
 			end
-    jump:
-			begin
-
-			end 
+    
 		xori:
 			begin
-				
+				//TODO: Look up the value
+				OUT = INPUTA ^ INPUTB;
+				SC_OUT = 0; 
 			end 
 		addi:
 			begin
-
+				OUT = INPUTA + INPUTB;
 			end 
 		sfri:
 			begin
-
+			//TODO: Need a look up table
+			INPUTA = INPUTA >> (INPUTB_int - 1);
+			[7:0]t = INPUTA & 1b'1; // last shifted bit is saved
+			OUT = INPUTA >> 1;
+			SC_OUT = t[0];
 			end 
 		sfli:
 			begin
-
+				//TODO: Need a look up table
+				INPUTA = INPUTA >> (INPUTB_int - 1);
+				[7:0]t = INPUTA & 1b'1; // last shifted bit is saved
+				OUT = INPUTA >> 1;
+				SC_OUT = t[0];
 			end 
 		set:
 			begin
-
+				//Assuming B has the value to set, TODO Look up table
+				INPUTA = INPUTB; 
 			end
 	end 
 	 /*
