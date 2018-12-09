@@ -17,7 +17,7 @@ always_comb
   else
     jump_en = 0;
 
-//setting mem_write
+//setting mem_write: ask about if we needed to add mem_write and mem_read in ctrl as signals?
  if((Instruction[4:0] ==  ksbr))
     mem_write = 1;
   else

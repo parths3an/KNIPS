@@ -36,3 +36,6 @@ module data_mem(
     end
 
 endmodule
+/*
+Ask him if we need to change data_mem, IF and 
+*/

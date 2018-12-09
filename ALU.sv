@@ -23,87 +23,86 @@ module ALU(
 	//TODO: 
   always_comb begin
     {SC_OUT, OUT} = 0;
-		integer INPUTB_int;
-		always @( INPUTB )
-    INPUTB_int = INPUTB;
 // single instruction for both LSW & MSW
   case(OP)
-   	sfrr: 
+   	ksfrr: 
 		 begin 
 			INPUTA = INPUTA >> (INPUTB_int - 1);
 			[7:0]t = INPUTA & 1b'1; // last shifted bit is saved
 			OUT = INPUTA >> 1;
 			SC_OUT = t[0];
 			end 	 
-	 	lbr:
+	/* 
+	 	klbr:
 			begin
 				
 			end	
-	 	sbr: 
+	 	ksbr: 
 			begin
 
 			end
-	  mov:
+	 */ 
+	 kmov://DONE
 			begin
 				OUT = INPUTA;
 				SC_OUT = 0; 
 			end
-    movr:
+    kmovr://DONE
 			begin
 				OUT = INPUTB;
 				SC_OUT = 0; 
 			end
-		xorr:
+		kxorr://DONE
 			begin
 				OUT = INPUTA ^ INPUTB;
 				SC_OUT = 0; 
 			end
-		orr:
+		korr://DONE
 			begin
 				OUT = INPUTA | INPUTB;
 				SC_OUT = 0; 
 			end
-		andi:
+		kandi://DONE
 			begin
 				OUT = INPUTA & INPUTB;
 				SC_OUT = 0; 
 			end
-		branch:
+		kbranch:
 			begin
 				if (INPUTA == 0)
 					ZERO = 1; 
+					OUT = 0;
+					else
+					ZERO = 0;  
 			end
     
-		xori:
+		kxori://DONE
 			begin
 				//TODO: Look up the value
 				OUT = INPUTA ^ INPUTB;
 				SC_OUT = 0; 
 			end 
-		addi:
+		kaddi://DONE
 			begin
-				OUT = INPUTA + INPUTB;
+				{SC_OUT, OUT} = {1'b0,INPUTA} + INPUTB + SC_IN; 
 			end 
-		sfri:
+		ksfri:
 			begin
-			//TODO: Need a look up table
-			INPUTA = INPUTA >> (INPUTB_int - 1);
+			INPUTA = INPUTA >> (INPUTB - 1);
 			[7:0]t = INPUTA & 1b'1; // last shifted bit is saved
 			OUT = INPUTA >> 1;
 			SC_OUT = t[0];
 			end 
-		sfli:
+		ksfli:
 			begin
-				//TODO: Need a look up table
-				INPUTA = INPUTA >> (INPUTB_int - 1);
-				[7:0]t = INPUTA & 1b'1; // last shifted bit is saved
-				OUT = INPUTA >> 1;
-				SC_OUT = t[0];
+				INPUTA = INPUTA << (INPUTB - 1);
+				[7:0]t = INPUTA & 8b'128; // last shifted bit is saved
+				OUT = INPUTA << 1;
+				SC_OUT = t >> 7;
 			end 
-		set:
+		kset:
 			begin
-				//Assuming B has the value to set, TODO Look up table
-				INPUTA = INPUTB; 
+				OUT = INPUTB; 
 			end
 	end 
 	 /*
@@ -173,7 +172,7 @@ module ALU(
 //	  kBRNE : OUT = INPUTA - INPUTB;   // use in conjunction w/ instruction decode 
 //  endcase
 	case(OUT)
-	  'b0     : ZERO = 1'b1;
+	  1'b0     : ZERO = 1'b1;
 	  default : ZERO = 1'b0;
 	endcase
 //$display("ALU Out %d \n",OUT);
