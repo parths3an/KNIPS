@@ -11,16 +11,30 @@ module Ctrl (
   );
 // jump on right shift that generates a zero
 always_comb
-  if((Instruction[2:0] ==  kRSH) && ZERO)
+  //TODO: Not sure abut the jump
+  if((Instruction[4:0] ==  kbranch) && ZERO)
     jump_en = 1;
   else
     jump_en = 0;
 
+//setting mem_write: ask about if we needed to add mem_write and mem_read in ctrl as signals?
+ if((Instruction[4:0] ==  ksbr))
+    mem_write = 1;
+  else
+    mem_write = 0;
+
+//setting mem_read
+ if((Instruction[4:0] ==  klbr))
+    mem_read = 1;
+    memToReg = 1; 
+  else
+    mem_read = 0;
+    memToReg = 0; 
+
+//
 // branch every time ALU result LSB = 0 (even)
 assign branch_en = BEVEN;
-
 endmodule
-
 
   ///				cmp r5, r4
    //				beq jump_label

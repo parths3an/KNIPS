@@ -24,6 +24,7 @@ module IF(
 	  PC <= 0;
 	else if(Halt)
 	  PC <= PC;
+    //TODO: Only use one of the below else if, use abs
 	else if(Branch_abs)	      // unconditional absolute jump
 	  PC <= Target;
 	else if(Branch_rel_en && ALU_zero) // conditional relative jump
