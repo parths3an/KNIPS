@@ -25,13 +25,36 @@ module ALU(
     {SC_OUT, OUT} = 0;
 // single instruction for both LSW & MSW
   case(OP)
-   	ksfrr: 
+   	
+  //might need to follow the lecture
+  //================================
+/*  kLSH : {SC_OUT, OUT} = {INPUTA, SC_IN};  	       // shift left 
+    kRSH : {OUT, SC_OUT} = {SC_IN, INPUTA};			   // shift right
+    or shifting by 1 multiple times
+ */
+    ksfrr: 
 		 begin 
 			INPUTA = INPUTA >> (INPUTB_int - 1);
 			[7:0]t = INPUTA & 1b'1; // last shifted bit is saved
 			OUT = INPUTA >> 1;
 			SC_OUT = t[0];
-			end 	 
+			end 	
+   
+    ksfri:
+			begin
+			INPUTA = INPUTA >> (INPUTB - 1);
+			[7:0]t = INPUTA & 1b'1; // last shifted bit is saved
+			OUT = INPUTA >> 1;
+			SC_OUT = t[0];
+			end 
+		ksfli:
+			begin
+				INPUTA = INPUTA << (INPUTB - 1);
+				[7:0]t = INPUTA & 8b'128; // last shifted bit is saved
+				OUT = INPUTA << 1;
+				SC_OUT = t >> 7;
+			end 
+//=============================================
 	/* 
 	 	klbr:
 			begin
@@ -67,18 +90,8 @@ module ALU(
 				OUT = INPUTA & INPUTB;
 				SC_OUT = 0; 
 			end
-		kbranch:
-			begin
-				if (INPUTA == 0)
-					ZERO = 1; 
-					OUT = 0;
-					else
-					ZERO = 0;  
-			end
-    
 		kxori://DONE
 			begin
-				//TODO: Look up the value
 				OUT = INPUTA ^ INPUTB;
 				SC_OUT = 0; 
 			end 
@@ -86,23 +99,10 @@ module ALU(
 			begin
 				{SC_OUT, OUT} = {1'b0,INPUTA} + INPUTB + SC_IN; 
 			end 
-		ksfri:
-			begin
-			INPUTA = INPUTA >> (INPUTB - 1);
-			[7:0]t = INPUTA & 1b'1; // last shifted bit is saved
-			OUT = INPUTA >> 1;
-			SC_OUT = t[0];
-			end 
-		ksfli:
-			begin
-				INPUTA = INPUTA << (INPUTB - 1);
-				[7:0]t = INPUTA & 8b'128; // last shifted bit is saved
-				OUT = INPUTA << 1;
-				SC_OUT = t >> 7;
-			end 
 		kset:
 			begin
-				OUT = INPUTB; 
+				OUT = INPUTB;
+        SC_OUT = 0; 
 			end
 	end 
 	 /*
@@ -178,9 +178,11 @@ module ALU(
 //$display("ALU Out %d \n",OUT);
     op_mnemonic = op_mne'(OP);
   end
-  always_comb BEVEN = //opcode[8:6] 
-       OP == 3'b101; //!INPUTB[0];               // note [0] -- look at LSB only
+  //set the signal for branch
+  always_comb BEVEN = opcode[8:4] == kbranch && INPUTA[3:0] == 3'b000;
+//OP == 3'b101; //!INPUTB[0];               // note [0] -- look at LSB only
 // always_comb	branch_enable = opcode[8:6]==3'b101? 1 : 0;  
+//always_comb branch_enable =
 endmodule
 
 

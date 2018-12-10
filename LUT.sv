@@ -13,6 +13,10 @@ always_comb
 	2'b10:	 Target = 16'h0003;
 	default: Target = 16'h0;
 */
+
+
+  // can save addr for branch
+
   4'b0000: Target = 0;
   4'b0001: Target = 1;
   4'b0010: Target = 4
@@ -22,6 +26,14 @@ always_comb
   4'b0110: Target = 32;
   4'b0111: Target = 64;
   4'b1000: Target = 255;
+  4'b1001: Target = 51;
+  4'b1010: Target = 59;
+  4'b1011: Target = 41;
+  4'b1100: Target = 22;
+  
+
+
+
   //4'b0110: Target = ;
   //4'b0111: Target = ;
 

@@ -4,7 +4,7 @@
 // partial only										   
 module TopLevel(
     input     start,	   // init/reset, active high
-	input     CLK,		   // clock -- posedge used inside design
+	  input     CLK,		   // clock -- posedge used inside design
     output    halt		   // done flag from DUT
     );
 
@@ -53,7 +53,9 @@ logic       SC_IN;         // carry register (loop with ALU)
 	.InstAddress   (PC), 
 	.InstOut       (Instruction)
 	);
-
+// Fetch Unit above ==============================
+  
+  
   assign load_inst = Instruction[8:6]==3'b110;
 
 // reg file
@@ -71,18 +73,14 @@ logic       SC_IN;         // carry register (loop with ALU)
 //	.raddrA ({Instruction[5:3],1'b0});
 //	.raddrB ({Instruction[5:3],1'b1});
 
-
-
-
-
-    assign InA = ReadA;						// connect RF out to ALU in
+  assign InA = ReadA;						// connect RF out to ALU in
 	assign InB = ReadB;
 	assign MEM_WRITE = (Instruction == 9'h111);  // mem_store command
 	assign regWriteValue = load_inst? Mem_Out : ALU_out;  // 2:1 switch into reg_file
     ALU ALU1  (
 	  .INPUTA  (InA),
 	  .INPUTB  (InB), 
-	  .OP      (Instruction[8:6]),
+	  .OP      (Instruction[8:4]), // top 5 bits for op
 	  .OUT     (ALU_out),//regWriteValue),
 	  .SC_IN   ,//(SC_IN),
 	  .SC_OUT  ,

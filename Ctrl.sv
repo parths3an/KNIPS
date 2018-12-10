@@ -3,19 +3,18 @@ import definitions::*;
 // inputs from instrROM, ALU flags
 // outputs to program_counter (fetch unit)
 module Ctrl (
-  input[ 8:0] Instruction,	   // machine code
+  input[8:0] Instruction,	   // machine code
   input       ZERO,			   // ALU out[7:0] = 0
               BEVEN,		   // ALU out[0]   = 0
   output logic jump_en,
                branch_en
   );
-// jump on right shift that generates a zero
-always_comb
-  //TODO: Not sure abut the jump
-  if((Instruction[4:0] ==  kbranch) && ZERO)
-    jump_en = 1;
-  else
-    jump_en = 0;
+
+//jump signal set
+always_comb  jump_en = Intruction[4:0] == kjump ? 1 : 0;
+//branch signal set
+assign branch_en = BEVEN;
+
 
 //setting mem_write: ask about if we needed to add mem_write and mem_read in ctrl as signals?
  if((Instruction[4:0] ==  ksbr))
@@ -33,7 +32,7 @@ always_comb
 
 //
 // branch every time ALU result LSB = 0 (even)
-assign branch_en = BEVEN;
+//assign branch_en = BEVEN;
 endmodule
 
   ///				cmp r5, r4

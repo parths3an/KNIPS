@@ -56,7 +56,11 @@ public class lab3_new {
         valToImm.put(32, "0110");
         valToImm.put(64, "0111");
         valToImm.put(255, "1000");
-   
+        valToImm.put(51, "1001");
+        valToImm.put(59, "1010");
+        valToImm.put(41, "1011");
+        valToImm.put(22, "1100");
+
         try {
             Scanner input = new Scanner(System.in); 
             String file = input.next();
@@ -67,6 +71,10 @@ public class lab3_new {
             
             String line = null;
         while ((line = reader.readLine()) != null) { 
+            
+            if (line.length() == 0) continue;
+            if (line.charAt(0) == '/') continue;
+            
             String[] strs = line.split("\\s+");
             System.out.println(line);
             String machinecode = processInstruction(map.get(strs[0]), strs[1], regToCode, valToImm);

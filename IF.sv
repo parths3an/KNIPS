@@ -9,8 +9,8 @@
 // Additional Comments: 
 //
 module IF(
-  input Branch_abs,			   
-  input Branch_rel_en,
+  input Branch_abs,			// JUMP   
+  input Branch_rel_en,  // CONDITIONAK BRANCH
   input ALU_zero,
   input [15:0] Target,
   input Init,
@@ -28,7 +28,7 @@ module IF(
 	else if(Branch_abs)	      // unconditional absolute jump
 	  PC <= Target;
 	else if(Branch_rel_en && ALU_zero) // conditional relative jump
-	  PC <= Target + PC;
+	  PC <= Target + PC; // if absolute, then directly the target
 	else
 	  PC <= PC+1;		  // default increment
 
