@@ -1,0 +1,99 @@
+# Reading C:/Altera/15.0/modelsim_ase/tcl/vsim/pref.tcl
+# do TopLevel_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim PE vmap 10.3d Lib Mapping Utility 2014.10 Oct  7 2014
+# vmap -modelsim_quiet work rtl_work 
+# Copying c:/Altera/15.0/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied c:/Altera/15.0/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -sv -work work +incdir+C:/Users/shh176/Desktop/KNIPS-master {C:/Users/shh176/Desktop/KNIPS-master/reg_file.sv}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 16:41:11 on Dec 10,2018
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/shh176/Desktop/KNIPS-master" C:/Users/shh176/Desktop/KNIPS-master/reg_file.sv 
+# -- Compiling module reg_file
+# 
+# Top level modules:
+# 	reg_file
+# End time: 16:41:11 on Dec 10,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/shh176/Desktop/KNIPS-master {C:/Users/shh176/Desktop/KNIPS-master/PC.sv}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 16:41:11 on Dec 10,2018
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/shh176/Desktop/KNIPS-master" C:/Users/shh176/Desktop/KNIPS-master/PC.sv 
+# -- Compiling module PrmCtr
+# 
+# Top level modules:
+# 	PrmCtr
+# End time: 16:41:11 on Dec 10,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/shh176/Desktop/KNIPS-master {C:/Users/shh176/Desktop/KNIPS-master/InstROM.sv}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 16:41:11 on Dec 10,2018
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/shh176/Desktop/KNIPS-master" C:/Users/shh176/Desktop/KNIPS-master/InstROM.sv 
+# -- Compiling module InstROM
+# 
+# Top level modules:
+# 	InstROM
+# End time: 16:41:11 on Dec 10,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/shh176/Desktop/KNIPS-master {C:/Users/shh176/Desktop/KNIPS-master/definitions.sv}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 16:41:11 on Dec 10,2018
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/shh176/Desktop/KNIPS-master" C:/Users/shh176/Desktop/KNIPS-master/definitions.sv 
+# -- Compiling package definitions
+# 
+# Top level modules:
+# 	--none--
+# End time: 16:41:11 on Dec 10,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/shh176/Desktop/KNIPS-master {C:/Users/shh176/Desktop/KNIPS-master/data_mem.sv}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 16:41:11 on Dec 10,2018
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/shh176/Desktop/KNIPS-master" C:/Users/shh176/Desktop/KNIPS-master/data_mem.sv 
+# -- Compiling module data_mem
+# 
+# Top level modules:
+# 	data_mem
+# End time: 16:41:11 on Dec 10,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/shh176/Desktop/KNIPS-master {C:/Users/shh176/Desktop/KNIPS-master/Ctrl.sv}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 16:41:11 on Dec 10,2018
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/shh176/Desktop/KNIPS-master" C:/Users/shh176/Desktop/KNIPS-master/Ctrl.sv 
+# -- Compiling package Ctrl_sv_unit
+# -- Importing package definitions
+# -- Compiling module Ctrl
+# 
+# Top level modules:
+# 	Ctrl
+# End time: 16:41:11 on Dec 10,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/shh176/Desktop/KNIPS-master {C:/Users/shh176/Desktop/KNIPS-master/ALU.sv}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 16:41:11 on Dec 10,2018
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/shh176/Desktop/KNIPS-master" C:/Users/shh176/Desktop/KNIPS-master/ALU.sv 
+# -- Compiling package ALU_sv_unit
+# -- Importing package definitions
+# -- Compiling module ALU
+# 
+# Top level modules:
+# 	ALU
+# End time: 16:41:11 on Dec 10,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/shh176/Desktop/KNIPS-master {C:/Users/shh176/Desktop/KNIPS-master/TopLevel.sv}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 16:41:11 on Dec 10,2018
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/shh176/Desktop/KNIPS-master" C:/Users/shh176/Desktop/KNIPS-master/TopLevel.sv 
+# -- Compiling module TopLevel
+# 
+# Top level modules:
+# 	TopLevel
+# End time: 16:41:11 on Dec 10,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 

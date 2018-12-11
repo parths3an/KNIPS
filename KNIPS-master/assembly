@@ -1,0 +1,59 @@
+//store the addr for padding
+set 61 //addr for padding
+mov r0
+lbr r0
+mov r2
+
+//store the addr for lfsr
+set 62
+mov r0
+lbr r0
+mov r3
+
+//store the addr for encoder
+set 63
+mov r0
+lbr r0
+mov r1
+
+
+set 0
+mov r5  //set i = 0 stored in r5; r14 == 0 as well
+xorr r2 //set the result of comparison for branch
+branch 59 //jump if r14 = 0; 61 is the testing line number
+
+movr r5
+addi 64
+mov r6 //locate the addr in mem to store the encoded to 
+
+set 32 //space character
+xorr r1
+andi 255 //0xff
+sbr r6 //store the change to the addr in mem
+
+movr r1
+sfli 1
+mov r6
+set 4
+mov r7
+movr r7
+
+xori 0
+branch 51
+movr r1
+sfrr r7
+xorr r1
+mov r1
+movr r7
+sfri 1
+jump 41
+
+movr r1
+andi 1
+orr r6
+andi 255
+mov r1
+movr r5
+addi 1
+jump 22
+

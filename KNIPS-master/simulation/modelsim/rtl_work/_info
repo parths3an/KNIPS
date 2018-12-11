@@ -1,0 +1,258 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/shh176/Desktop/KNIPS-master/simulation/modelsim
+vALU
+Z1 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
+Z2 DXx4 work 11 definitions 0 22 cL5cP?OeFoC];gFGW]]CQ3
+DXx4 work 11 ALU_sv_unit 0 22 >c94z0XNbPa`dOG1L@<5h3
+Z3 V`JN@9S9cnhjKRR_L]QIcM3
+r1
+!s85 0
+31
+!i10b 1
+!s100 `LaN:LO7_b_X0IF84RIfb3
+IGh59^boPjPY?4Zj5DU[=m1
+!s105 ALU_sv_unit
+S1
+R0
+Z4 w1544481115
+Z5 8C:/Users/shh176/Desktop/KNIPS-master/ALU.sv
+Z6 FC:/Users/shh176/Desktop/KNIPS-master/ALU.sv
+L0 10
+Z7 OV;L;10.3d;59
+Z8 !s108 1544488871.439000
+Z9 !s107 C:/Users/shh176/Desktop/KNIPS-master/ALU.sv|
+Z10 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/shh176/Desktop/KNIPS-master|C:/Users/shh176/Desktop/KNIPS-master/ALU.sv|
+!i113 1
+Z11 o-sv -work work
+Z12 !s92 -sv -work work +incdir+C:/Users/shh176/Desktop/KNIPS-master
+n@a@l@u
+XALU_sv_unit
+R1
+R2
+V>c94z0XNbPa`dOG1L@<5h3
+r1
+!s85 0
+31
+!i10b 1
+!s100 e?]8eSST`92`_VzP6l3SW2
+I>c94z0XNbPa`dOG1L@<5h3
+!i103 1
+S1
+R0
+R4
+R5
+R6
+L0 9
+R7
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@a@l@u_sv_unit
+vCtrl
+R1
+R2
+DXx4 work 12 Ctrl_sv_unit 0 22 26;W=LbRMVBn4J>IQ9aRc1
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 B7[@5OAHgN1;m[<KX8F`n1
+IT`6:oiF5;_^0Xj`K=HYIh0
+!s105 Ctrl_sv_unit
+S1
+R0
+Z13 w1544484318
+Z14 8C:/Users/shh176/Desktop/KNIPS-master/Ctrl.sv
+Z15 FC:/Users/shh176/Desktop/KNIPS-master/Ctrl.sv
+L0 5
+R7
+Z16 !s108 1544488871.392000
+Z17 !s107 C:/Users/shh176/Desktop/KNIPS-master/Ctrl.sv|
+Z18 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/shh176/Desktop/KNIPS-master|C:/Users/shh176/Desktop/KNIPS-master/Ctrl.sv|
+!i113 1
+R11
+R12
+n@ctrl
+XCtrl_sv_unit
+R1
+R2
+V26;W=LbRMVBn4J>IQ9aRc1
+r1
+!s85 0
+31
+!i10b 1
+!s100 kazHZf>LGG@QlPHeZQo>81
+I26;W=LbRMVBn4J>IQ9aRc1
+!i103 1
+S1
+R0
+R13
+R14
+R15
+L0 1
+R7
+R16
+R17
+R18
+!i113 1
+R11
+R12
+n@ctrl_sv_unit
+vdata_mem
+R1
+Z19 !s110 1544488871
+!i10b 1
+!s100 C_CgBCe?^b@5PW`]_?U@:2
+I6VRQm`2aAJo=j]Z9KI^4g1
+R3
+!s105 data_mem_sv_unit
+S1
+R0
+Z20 w1544478876
+8C:/Users/shh176/Desktop/KNIPS-master/data_mem.sv
+FC:/Users/shh176/Desktop/KNIPS-master/data_mem.sv
+L0 5
+R7
+r1
+!s85 0
+31
+!s108 1544488871.317000
+!s107 C:/Users/shh176/Desktop/KNIPS-master/data_mem.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/shh176/Desktop/KNIPS-master|C:/Users/shh176/Desktop/KNIPS-master/data_mem.sv|
+!i113 1
+R11
+R12
+Xdefinitions
+R1
+R19
+!i10b 1
+!s100 ?EMPjGP9bgG8Fc_CD;Yf;0
+IcL5cP?OeFoC];gFGW]]CQ3
+VcL5cP?OeFoC];gFGW]]CQ3
+S1
+R0
+R20
+8C:/Users/shh176/Desktop/KNIPS-master/definitions.sv
+FC:/Users/shh176/Desktop/KNIPS-master/definitions.sv
+L0 2
+R7
+r1
+!s85 0
+31
+!s108 1544488871.284000
+!s107 C:/Users/shh176/Desktop/KNIPS-master/definitions.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/shh176/Desktop/KNIPS-master|C:/Users/shh176/Desktop/KNIPS-master/definitions.sv|
+!i113 1
+R11
+R12
+vInstROM
+R1
+R19
+!i10b 1
+!s100 [1=gC185IHVPBoHSAUDiF2
+IkQRLLP?Hz[=R`85NQ>fnD2
+R3
+!s105 InstROM_sv_unit
+S1
+R0
+w1544481756
+8C:/Users/shh176/Desktop/KNIPS-master/InstROM.sv
+FC:/Users/shh176/Desktop/KNIPS-master/InstROM.sv
+L0 14
+R7
+r1
+!s85 0
+31
+!s108 1544488871.206000
+!s107 C:/Users/shh176/Desktop/KNIPS-master/InstROM.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/shh176/Desktop/KNIPS-master|C:/Users/shh176/Desktop/KNIPS-master/InstROM.sv|
+!i113 1
+R11
+R12
+n@inst@r@o@m
+vPrmCtr
+R1
+R19
+!i10b 1
+!s100 kS3`z^HMc3KT]@n]OAM=42
+ITS^DVG?PICDznDMnW@iF;3
+R3
+!s105 PC_sv_unit
+S1
+R0
+R20
+8C:/Users/shh176/Desktop/KNIPS-master/PC.sv
+FC:/Users/shh176/Desktop/KNIPS-master/PC.sv
+L0 5
+R7
+r1
+!s85 0
+31
+!s108 1544488871.159000
+!s107 C:/Users/shh176/Desktop/KNIPS-master/PC.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/shh176/Desktop/KNIPS-master|C:/Users/shh176/Desktop/KNIPS-master/PC.sv|
+!i113 1
+R11
+R12
+n@prm@ctr
+vreg_file
+R1
+R19
+!i10b 1
+!s100 Yg8gb7FQMGiYRTCnzk5mb1
+I]?6PmPn_0W5b]bGR=PnU^2
+R3
+!s105 reg_file_sv_unit
+S1
+R0
+w1544481317
+8C:/Users/shh176/Desktop/KNIPS-master/reg_file.sv
+FC:/Users/shh176/Desktop/KNIPS-master/reg_file.sv
+L0 7
+R7
+r1
+!s85 0
+31
+!s108 1544488871.112000
+!s107 C:/Users/shh176/Desktop/KNIPS-master/reg_file.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/shh176/Desktop/KNIPS-master|C:/Users/shh176/Desktop/KNIPS-master/reg_file.sv|
+!i113 1
+R11
+R12
+vTopLevel
+R1
+R19
+!i10b 1
+!s100 kXmm9hG>X;LCd5<I91hM=0
+IK^UlCF[8@mL1[fM^iBBA^1
+R3
+!s105 TopLevel_sv_unit
+S1
+R0
+w1544488814
+8C:/Users/shh176/Desktop/KNIPS-master/TopLevel.sv
+FC:/Users/shh176/Desktop/KNIPS-master/TopLevel.sv
+L0 5
+R7
+r1
+!s85 0
+31
+!s108 1544488871.501000
+!s107 C:/Users/shh176/Desktop/KNIPS-master/TopLevel.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/shh176/Desktop/KNIPS-master|C:/Users/shh176/Desktop/KNIPS-master/TopLevel.sv|
+!i113 1
+R11
+R12
+n@top@level
