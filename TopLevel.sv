@@ -29,6 +29,18 @@ wire        MEM_READ,	   // data_memory read enable
 logic[15:0] cycle_ct;	   // standalone; NOT PC!
 logic       SC_IN;         // carry register (loop with ALU)
 
+
+
+IF if(
+.Branch_abs (branch_en),			// JUMP   
+.ALU_zero	(ZERO),
+.Target 	(lutOut),
+.Init 		(start),
+.Halt		 	(halt),
+.CLK 			(CLK),
+.PC
+);
+
 // Fetch = Program Counter + Instruction ROM
 // Program Counter
   PrmCtr PC1 (
@@ -46,7 +58,9 @@ logic       SC_IN;         // carry register (loop with ALU)
 	.ZERO,			 // from ALU: result = 0
 	.BEVEN,			 // from ALU: input B is even (LSB=0)
 	.jump_en,		 // to PC
-	.branch_en		 // to PC
+	.branch_en,
+	.data_outA (inA),
+	.data_outB	(inB)	 // to PC
   );
 // instruction ROM
   InstROM instr_ROM1(
@@ -62,9 +76,8 @@ logic       SC_IN;         // carry register (loop with ALU)
 	reg_file #(.W(8),.D(4)) reg_file1 (
 		.CLK    				  ,
 		.write_en  (reg_wr_en)    , 
-		.raddrA    ({1'b0,Instruction[5:3]}), //concatenate with 0 to give us 4 bits
-		.raddrB    ({1'b0,Instruction[2:0]}), 
-		.waddr     ({1'b0,Instruction[5:3]+1}), 	  // mux above
+		.raddrA    (Instruction[3:0]), //concatenate with 0 to give us 4 bits 
+		.waddr     (Instruction[3:0])	  // mux above
 		.data_in   (regWriteValue) , 
 		.data_outA (ReadA        ) , 
 		.data_outB (ReadB		 )
@@ -73,13 +86,11 @@ logic       SC_IN;         // carry register (loop with ALU)
 //	.raddrA ({Instruction[5:3],1'b0});
 //	.raddrB ({Instruction[5:3],1'b1});
 
-  assign InA = ReadA;						// connect RF out to ALU in
-	assign InB = ReadB;
 	assign MEM_WRITE = (Instruction == 9'h111);  // mem_store command
 	assign regWriteValue = load_inst? Mem_Out : ALU_out;  // 2:1 switch into reg_file
     ALU ALU1  (
-	  .INPUTA  (InA),
-	  .INPUTB  (InB), 
+	  .INPUTA  (inA),
+	  .INPUTB  (inB), 
 	  .OP      (Instruction[8:4]), // top 5 bits for op
 	  .OUT     (ALU_out),//regWriteValue),
 	  .SC_IN   ,//(SC_IN),

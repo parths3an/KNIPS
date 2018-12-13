@@ -1,5 +1,5 @@
 module LUT(
-  input[1:0] addr,
+  input[4:0] addr,
   output logic[15:0] Target
   );
 

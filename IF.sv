@@ -10,9 +10,8 @@
 //
 module IF(
   input Branch_abs,			// JUMP   
-  input Branch_rel_en,  // CONDITIONAK BRANCH
   input ALU_zero,
-  input [15:0] Target,
+  input [7:0] Target,
   input Init,
   input Halt,
   input CLK,
@@ -24,11 +23,8 @@ module IF(
 	  PC <= 0;
 	else if(Halt)
 	  PC <= PC;
-    //TODO: Only use one of the below else if, use abs
-	else if(Branch_abs)	      // unconditional absolute jump
-	  PC <= Target;
-	else if(Branch_rel_en && ALU_zero) // conditional relative jump
-	  PC <= Target + PC; // if absolute, then directly the target
+	else if(Branch_abs)	    // unconditional absolute jump
+	  PC <= Target; // conditional relative jump
 	else
 	  PC <= PC+1;		  // default increment
 

@@ -35,7 +35,7 @@ module ALU(
     ksfrr: 
 		 begin 
 			INPUTA = INPUTA >> (INPUTB_int - 1);
-			[7:0]t = INPUTA & 1b'1; // last shifted bit is saved
+			t[7:0] = INPUTA & 1b'1; // last shifted bit is saved
 			OUT = INPUTA >> 1;
 			SC_OUT = t[0];
 			end 	
@@ -43,14 +43,14 @@ module ALU(
     ksfri:
 			begin
 			INPUTA = INPUTA >> (INPUTB - 1);
-			[7:0]t = INPUTA & 1b'1; // last shifted bit is saved
+			t[7:0] = INPUTA & 1b'1; // last shifted bit is saved
 			OUT = INPUTA >> 1;
 			SC_OUT = t[0];
 			end 
 		ksfli:
 			begin
 				INPUTA = INPUTA << (INPUTB - 1);
-				[7:0]t = INPUTA & 8b'128; // last shifted bit is saved
+				t[7:0] = INPUTA & 8b'128; // last shifted bit is saved
 				OUT = INPUTA << 1;
 				SC_OUT = t >> 7;
 			end 
